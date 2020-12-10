@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+{%block content%}
+<div id="works">
+    <section class="main__works">
+        <h1 class="works__title">WORK NOTE</h1>
+        <div class="category__list">
+            {% for name in category  %}
+            <a class="category__btn {% if categoryDec.pk == name.pk %}
+                is-active
+            {% endif %}" id="{{name.pk}}" href="{%url 'works:desc' name.pk %}">
+                {{name}}
+            </a>
+            {% endfor %}
+        </div>
+        {% if  categoryDec.pk is not 7%}
+        <div class="works__desc">
+
+
+            {% if categoryDec.description %}
+
+            <p class="is-show" id="{{categoryDec.pk}}">{{categoryDec.description|safe }}
+            </p>
+            {%else%}
+
+            <p class="is-show">&nbsp 나는 작품 속 구겨짐을 통해 현실의 불안과 지금이 아닌 것에 대한 이야기하고자 한다. 종이는 현실과 욕망의 중간 매개체이다. 종이 속 그림은 지금이
+                아닌 욕망을 이야기하지만
+                구겨짐은 결국
+                현실에 머무름을 나타낸다. 현실의 괴로움은 환상적 이상에서 비롯된다. <br /><br />&nbsp그것은 지금을 잔인할 정도로 객관적으로 보게 하기 때문이다. 나를 괴롭히는 환상은
+                ‘순수’ 혹은
+                ‘욕망’이라고 이름붙일 수 있다. ‘없는 것’에 대한 갈구는 순수한 본성이며 채우고자 하는 욕망과 연결되기 때문이다. 그러나 욕망은 녹록하지 않은 현실의 벽에 자주 부딪힌다. 나는 이
+                같은 외부의
+                부정적 타격에 휩쓸리지 않기 위해 현실과 환상의 '거리두기'를 시도한다. 현실과 환상의 괴리로 인한 불확실과 불안으로부터 스스로를 보호하기 위해서는 무심, 냉소, 회의와 같은 중간의
+                자세를
+                지녀야 한다는 것을 깨달았다.
+                <br /><br />&nbsp이 같은 삶의 태도는 그림에서 드로잉과 구겨짐, 정적인 화면구성으로 나타난다.
+                그림의 기초 단계인 드로잉은 가장 순수하며 자유로운 순간이다. 나의 드로잉은 환상을 나타내지만 환상적이거나 이상향적 형체가 등장하지 않는다. 오래전부터 다루어 친숙하고 편안한 재료(종이,
+                펜, 색연필, 연필, 수채화 물감, 붓 등)를 사용해 그리고 싶은 것을 그리는 자유로움 자체가 환상과 욕망이 일치하는 이상적인 세계의 경험이다.
+                <br /><br />&nbsp 드로잉이 자유와 환상이라면 캔버스 페인팅은 현실을 자각하는 과정이다. 드로잉이 ‘어린 나’라면 캔버스의 페인팅은 ‘어른의 나’이다. 드로잉이 환상과의
+                만남이라면 페인팅은 환상의
+                객관화이다. 나에게 종이는 순수와 대면할 수 있는 매개체이며 원초적인 환상의 공간이다. 종이의 ‘구겨짐’은 환상의 가벼움을 말함과 동시에 현실의 자아를 설명하기 위한 액션의 결과이다.
+                그리고 내가 만들어낸 환상은 종이 위의 그림일 뿐임을 일깨우는 객관화의 과정이다. 이같이 '구겨짐'은 더 이상 환상의 세계에 의지하지 않고 불확실한 세계(현실)로 나아가려는 자아이다.
+                이러한 자아는 불안하지만 현실을 인지하고자 하는 의지를 지닌다.<br /><br />&nbsp
+                작품은 환상에 대한 갈망과 현실의 불안, 이 둘의 균형을 유지하기 위한 삶의 태도에 대한 것이다. 사람들은 누구나 각자의 환상을 지니고 있다. 그것은 때론 만화처럼 비현실적이기도 하고,
+                지금보다 좀 더 나은 상황 또는 행복했던 과거를 환상으로 여기는 경우도 있다. 이처럼 환상은 욕망을 지닌다. 환상이 나를 지배하고 흔들어 놓아 일상생활에 부정적 타격을 주지 못하도록
+                현실감각을 계속해서 환기시키는 작업을 이어왔다. 그리고 현재는 환상과 현실 사이의 중심잡기에 대한 이야기를 드로잉과 구겨짐의 페인팅을 통해 전달하고자 한다. 현실을 향한 나의 회의적인
+                태도는 그림을 그리는 원동력이 되고, 이는 불확실한 삶에 대한 희망이 되어준다.</p>
+            {% endif %}
+
+        </div>
+        {%endif%}
+    </section>
+
+    {% if works %}
+    <section class="main__detailworks">
+        <div class="detail__title">WORKS</div>
+        <div class="works__info">
+            {% for work in works %}
+            <div class="img__card" id="{{work.category.pk}}">
+                <img id="{{work.image}}" src="/media/{{work.image}}" data-src="/media/{{work.image}}"
+                    data-size="{{work.size}}" data-material="{{work.material}}" data-category="{{work.category}}"
+                    data-year="{{work.year}}" data-title="{{work.worksTitle}}" onclick='openModal(this);' />
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+    <section id="modal" class="modal__close">
+        <div>
+            <div class="modal__form">
+            </div>
+        </div>
+    </section>
+
+</div>
+{%endblock content%}

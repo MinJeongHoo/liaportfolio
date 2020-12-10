@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="pinterest" content="nopin" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <script src="../static/js/main.js" defer></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <title>{%block header%}{%endblock header%}</title>
+</head>
+
+<body>
+    {% include 'partials/header.html' %}
+    <div class="content">
+        {% block content%}
+        {% endblock content%}
+    </div>
+    {% include 'partials/footer.html' %}
+</body>
+
+</html>

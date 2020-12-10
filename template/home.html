@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{%block header%}
+Home
+{%endblock header%}
+
+{%block content%}
+<div id="main__top">
+    <section id="main__intro">
+        <span class="main__title">LIA KANG</span>
+    </section>
+    <section id="main__about">
+        <div class="main__about--desc">
+            <span class="about__title">A Few Words About My Works</span>
+            <p class="about__description">종이의 ‘구겨짐’은 환상의 가벼움을 말함과 동시에 현실의 자아를 설명하기 위한 액션의 결과이다. 그리고 내가 만들어낸 환상은 종이 위의
+                그림일 뿐임을 일깨우는 객관화의 과정이다. 이같이 '구겨짐'은 더 이상 환상의 세계에 의지하지 않고 불확실한 세계(현실)로 나아가려는 자아이다. 이러한 자아는 불안하지만 현실을 인지하고자
+                하는 의지를 지닌다.</p>
+            <a href="{%url 'works:works'%}"><button class="main__button--emptyground"> Read More</button></a>
+        </div>
+        <div class="main__about--img"></div>
+    </section>
+</div>
+{%endblock content%}
